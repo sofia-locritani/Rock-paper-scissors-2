@@ -2,9 +2,6 @@ let Rock = 0;
 let Paper = 1;
 let Scissors = 2;
 
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3);
 
@@ -18,13 +15,14 @@ function getComputerChoice() {
         return "Scissors";
     }
 }
-
 function getHumanChoice() {
     let humanChoice = window.prompt("Rock, Paper or Scissors?");
     return humanChoice;
 }
-
-function playRound(humanChoice, computerChoice) {
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         console.log("It's a draw");
     }
@@ -41,8 +39,12 @@ function playRound(humanChoice, computerChoice) {
         computerScore++;
     }
 }
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound (humanSelection, computerSelection);
+let rounds = 0;
+while (rounds < 5) {
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+    rounds++;
+}
+}
+playGame();
